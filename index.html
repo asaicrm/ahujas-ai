@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ahujas — AI products built on exact math</title>
+<meta name="description" content="Ahujas LLC builds AI products where the numbers are computed, not guessed. Makers of freeaikundli.com and ASAI CRM. Los Angeles, California." />
+<meta property="og:title" content="Ahujas — AI products built on exact math" />
+<meta property="og:description" content="Makers of freeaikundli.com and ASAI CRM. Los Angeles, California." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#06090f;
+  --void:#0b1120;
+  --slab:#101830;
+  --chrome:#e8eefb;
+  --mute:#8492b0;
+  --violet:#7b61ff;
+  --cyan:#3fd8e0;
+  --gold:#f0b24a;
+
+  --display:"Bodoni Moda",Georgia,serif;
+  --body:"Space Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+
+  --edge:1px solid rgba(232,238,251,.10);
+  --pad:clamp(20px,5vw,64px);
+  --s:1;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  overflow-x:hidden;
+  background:var(--ink);
+  color:var(--chrome);
+  font-family:var(--body);
+  font-weight:300;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(70% 50% at 50% 0%,rgba(123,97,255,.16),transparent 70%),
+    radial-gradient(50% 40% at 85% 18%,rgba(63,216,224,.10),transparent 70%),
+    radial-gradient(60% 40% at 12% 40%,rgba(240,178,74,.07),transparent 70%);
+}
+main,header,footer{position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;border-radius:2px}
+
+.wrap{max-width:1180px;margin:0 auto;padding-inline:var(--pad)}
+
+/* ---------- type ---------- */
+.tag{
+  font-family:var(--mono);font-size:11px;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--mute);
+}
+.chrome{
+  background-image:linear-gradient(178deg,#ffffff 0%,#dce5f6 30%,#8b9cbd 50%,#f2f6ff 60%,#ffffff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:-.015em}
+h1{font-size:clamp(38px,6.4vw,80px);line-height:1.02}
+h1 span{display:block}
+h2{font-size:clamp(30px,4.4vw,52px);line-height:1.08}
+h3{font-size:clamp(26px,3.4vw,38px);line-height:1.1}
+.lede{font-size:clamp(17px,1.55vw,20px);color:#b8c4dc;max-width:56ch;margin:22px auto 0}
+
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  background:linear-gradient(180deg,rgba(6,9,15,.82),rgba(6,9,15,.35));
+  border-bottom:1px solid rgba(232,238,251,.07);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.mark{font-family:var(--display);font-size:20px;letter-spacing:.34em;padding-left:.34em}
+.mark i{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.1em;color:var(--gold);vertical-align:super}
+.nav nav{display:flex;gap:32px}
+.nav nav a{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);transition:color .3s}
+.nav nav a:hover{color:var(--chrome)}
+@media(max-width:640px){.nav nav{gap:18px}.nav nav a:first-child{display:none}}
+
+/* ---------- hero ---------- */
+.hero{text-align:center;padding:clamp(36px,6vw,60px) 0 clamp(70px,10vw,120px)}
+.stage-wrap{position:relative;height:calc(300px * var(--s));margin:26px 0 0}
+.stage-scale{position:absolute;left:50%;top:0;transform:translateX(-50%) scale(var(--s));transform-origin:top center}
+.stage{position:relative;width:720px;height:300px}
+.mirror{margin-top:calc(-6px * var(--s));height:calc(150px * var(--s));position:relative}
+.mirror .stage-scale{transform:translateX(-50%) scale(var(--s)) scaleY(-1);transform-origin:top center}
+.mirror .stage{filter:blur(2.5px) saturate(.7)}
+.mirror{-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.42),transparent 78%);
+        mask-image:linear-gradient(to bottom,rgba(0,0,0,.42),transparent 78%);opacity:.6}
+@media(max-width:900px){:root{--s:.72}}
+@media(max-width:600px){:root{--s:.5}}
+
+.ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  border-radius:50%;border:1px solid rgba(232,238,251,.09)}
+.ring.a{width:280px;height:90px;border-color:rgba(240,178,74,.16)}
+.ring.b{width:470px;height:150px;border-color:rgba(63,216,224,.14)}
+.ring.c{width:640px;height:204px;border-color:rgba(123,97,255,.16)}
+
+.core{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 26%,#ffffff 0%,#dbe6fb 14%,#93a6c9 40%,#2b3a5c 72%,#0b1120 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.22),0 0 48px rgba(123,97,255,.45),0 0 120px rgba(63,216,224,.2);
+}
+.core::after{content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(123,97,255,.55),rgba(63,216,224,.5),rgba(240,178,74,.5),rgba(123,97,255,.55));
+  mix-blend-mode:overlay;animation:sheen 14s linear infinite}
+.halo{position:absolute;left:50%;top:50%;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;
+  border:1px solid rgba(232,238,251,.12)}
+@keyframes sheen{to{transform:rotate(360deg)}}
+
+.orb{position:absolute;left:0;top:0;offset-rotate:0deg;offset-anchor:center;padding:10px;margin:-10px;cursor:pointer;z-index:2}
+.orb .bead{transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .35s}
+.orb .lbl{transition:color .3s}
+.stage:hover .orb,.stage:focus-within .orb{animation-play-state:paused}
+.orb:hover .bead,.orb:focus-visible .bead{transform:scale(1.45);filter:brightness(1.2)}
+.orb:hover .lbl,.orb:focus-visible .lbl{color:#fff}
+.orb:focus-visible{outline:none}
+.orb:focus-visible .bead{outline:2px solid var(--cyan);outline-offset:5px}
+.orb .bead{display:block;border-radius:50%;position:relative}
+.orb .bead::after{content:"";position:absolute;left:22%;top:16%;width:26%;height:20%;border-radius:50%;
+  background:rgba(255,255,255,.9);filter:blur(1px)}
+.orb .lbl{position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(232,238,251,.6);white-space:nowrap}
+
+.p-kundli{offset-path:path("M 40,150 a 320,102 0 1,0 640,0 a 320,102 0 1,0 -640,0");animation:orbit 34s linear infinite}
+.p-kundli .bead{width:26px;height:26px;background:radial-gradient(circle at 32% 26%,#fff5e0,#f0b24a 45%,#7d4d10 100%);
+  box-shadow:0 0 22px rgba(240,178,74,.55)}
+.p-asai{offset-path:path("M 125,150 a 235,75 0 1,0 470,0 a 235,75 0 1,0 -470,0");animation:orbit 22s linear infinite;animation-delay:-9s}
+.p-asai .bead{width:22px;height:22px;background:radial-gradient(circle at 32% 26%,#eafcff,#3fd8e0 45%,#0d4f56 100%);
+  box-shadow:0 0 20px rgba(63,216,224,.55)}
+.p-next{offset-path:path("M 220,150 a 140,45 0 1,0 280,0 a 140,45 0 1,0 -280,0");animation:orbit 13s linear infinite;animation-delay:-4s}
+.p-next .bead{width:11px;height:11px;background:radial-gradient(circle at 32% 26%,#fff,#8fa0c4 50%,#26314d 100%);
+  box-shadow:0 0 14px rgba(232,238,251,.4)}
+.p-next .lbl{color:rgba(232,238,251,.34);font-size:9.5px}
+@keyframes orbit{to{offset-distance:100%}}
+
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid rgba(232,238,251,.2);position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(232,238,251,.13),rgba(232,238,251,.03));
+  transition:border-color .35s,transform .35s,box-shadow .35s}
+.btn:hover{border-color:rgba(232,238,251,.55);transform:translateY(-2px);box-shadow:0 12px 34px rgba(123,97,255,.25)}
+.btn.ghost{background:transparent;border-color:rgba(232,238,251,.13);color:var(--mute)}
+.btn.ghost:hover{color:var(--chrome)}
+
+/* ---------- sections ---------- */
+section{padding:clamp(70px,10vw,130px) 0}
+.hairline{height:1px;background:linear-gradient(90deg,transparent,rgba(232,238,251,.22),transparent)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head p{margin:0;max-width:40ch;color:var(--mute);font-size:15px}
+
+/* ---------- product slabs ---------- */
+.slab{position:relative;border-radius:22px;padding:clamp(28px,4vw,52px);overflow:hidden;
+  border:1px solid rgba(232,238,251,.12);
+  background:linear-gradient(158deg,rgba(24,34,60,.9),rgba(11,17,32,.72));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 30px 70px -40px rgba(0,0,0,.9)}
+.slab::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(104deg,transparent 38%,rgba(255,255,255,.10) 47%,rgba(255,255,255,.03) 52%,transparent 60%);
+  transform:translateX(-130%);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.slab:hover::after{transform:translateX(130%)}
+.slab-shell{margin-bottom:56px}
+.gloss{height:78px;margin:0 26px;border-radius:0 0 40% 40%/0 0 100% 100%;filter:blur(16px);opacity:.42;
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent)}
+.k .gloss{background:linear-gradient(180deg,rgba(240,178,74,.55),transparent)}
+.a .gloss{background:linear-gradient(180deg,rgba(63,216,224,.5),transparent)}
+.slab-top{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.dot{width:9px;height:9px;border-radius:50%}
+.k .dot{background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.a .dot{background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.slab h3{margin-bottom:10px}
+.k h3{color:#ffe3b0}
+.a h3{color:#c9f6f9}
+.claim{font-family:var(--display);font-size:clamp(19px,2.2vw,25px);line-height:1.35;color:var(--chrome);max-width:24ch;margin:0 0 20px}
+.slab p.body{margin:0;color:#a9b6d0;max-width:62ch;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 30px}
+.chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  padding:7px 13px;border-radius:999px;border:1px solid rgba(232,238,251,.14);color:#9dabc7;
+  background:rgba(232,238,251,.03)}
+.golink{font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:10px;padding-bottom:6px;
+  border-bottom:1px solid rgba(232,238,251,.25);transition:gap .3s,border-color .3s}
+.slab:hover .golink{gap:18px;border-color:var(--chrome)}
+.k .golink{color:var(--gold)}
+.a .golink{color:var(--cyan)}
+@media(min-width:900px){
+  .slab-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,4vw,56px);align-items:start}
+}
+
+/* ---------- approach ---------- */
+.panel{display:grid;gap:1px;background:rgba(232,238,251,.09);border-top:1px solid rgba(232,238,251,.09);
+  border-bottom:1px solid rgba(232,238,251,.09)}
+@media(min-width:820px){.panel{grid-template-columns:repeat(3,1fr)}}
+.cell{background:var(--ink);padding:34px clamp(4px,2vw,30px) 40px}
+.cell .tag{display:block;margin-bottom:14px}
+.cell strong{display:block;font-family:var(--display);font-size:23px;font-weight:400;margin-bottom:12px}
+.cell p{margin:0;color:var(--mute);font-size:15.5px;line-height:1.65}
+.stack{margin-top:44px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5d6b88}
+
+/* ---------- contact ---------- */
+.contact{text-align:center}
+.mailto{font-family:var(--display);font-size:clamp(26px,4.6vw,54px);display:inline-block;margin-top:26px;
+  border-bottom:1px solid rgba(232,238,251,.2);padding-bottom:8px;transition:border-color .4s}
+.mailto:hover{border-color:var(--chrome)}
+
+footer{border-top:1px solid rgba(232,238,251,.08);padding:32px 0 44px}
+.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.foot a:hover{color:var(--chrome)}
+.foot .tag{color:#55627e}
+
+/* ---------- reveal ---------- */
+.rise{opacity:0;transform:translateY(20px);transition:opacity .95s cubic-bezier(.2,.7,.2,1),transform .95s cubic-bezier(.2,.7,.2,1)}
+.rise.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rise{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="mark chrome" href="#top">AHUJAS<i>.ai</i></a>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <span class="tag">Ahujas LLC · Los Angeles, California</span>
+
+    <div class="stage-wrap">
+      <div class="stage-scale"><div class="stage" id="orrery">
+        <div aria-hidden="true"><div class="ring c"></div><div class="ring b"></div><div class="ring a"></div>
+        <div class="halo"></div><div class="core"></div></div>
+        <a class="orb p-kundli" href="https://freeaikundli.com" aria-label="Visit freeaikundli.com"><span class="bead"></span><span class="lbl">freeaikundli</span></a>
+        <a class="orb p-asai" href="https://asaicrm.com" aria-label="Visit asaicrm.com"><span class="bead"></span><span class="lbl">ASAI CRM</span></a>
+        <a class="orb p-next" href="#contact" aria-label="Ask about what's in build"><span class="bead"></span><span class="lbl">in build</span></a>
+      </div></div>
+    </div>
+    <div class="mirror" aria-hidden="true">
+      <div class="stage-scale"><div class="stage">
+        <div class="ring c"></div><div class="ring b"></div><div class="ring a"></div>
+        <div class="halo"></div><div class="core"></div>
+        <div class="orb p-kundli"><span class="bead"></span></div>
+        <div class="orb p-asai"><span class="bead"></span></div>
+        <div class="orb p-next"><span class="bead"></span></div>
+      </div></div>
+    </div>
+
+    <h1 style="margin-top:26px">
+      <span class="chrome">The math is exact.</span>
+      <span class="chrome">The conversation is human.</span>
+    </h1>
+    <p class="lede">Ahujas builds AI products where the numbers are computed, not guessed — planetary
+      positions to the arc&#8209;second, pipeline data you can audit — and language sits on top to make
+      them make sense.</p>
+
+    <div class="cta-row">
+      <a class="btn" href="#products">See what's live</a>
+      <a class="btn ghost" href="#contact">Start a conversation</a>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="wrap">
+      <div class="hairline" style="margin-bottom:52px"></div>
+      <div class="sec-head rise">
+        <h2 class="chrome">Shipped, and live today.</h2>
+        <p>Two products in production. One built for a person sitting with a hard question, one for a
+          team that has to report the answer to a board.</p>
+      </div>
+
+      <!-- freeaikundli -->
+      <div class="slab-shell k rise">
+        <article class="slab">
+          <div class="slab-top"><span class="dot"></span><span class="tag">Consumer · Live</span></div>
+          <div class="slab-inner">
+            <div>
+              <h3>freeaikundli</h3>
+              <p class="claim">Vedic astrology, actually computed.</p>
+            </div>
+            <div>
+              <p class="body">Birth charts, dashas and Guna Milan compatibility are calculated from real
+                planetary positions — an ephemeris engine, not a lookup table. An AI astrologer reads the
+                chart back in plain language, then forgets the conversation. Around it sits a panchang
+                almanac for 187 cities, wedding planning tools, and sessions with human astrologers.</p>
+              <div class="chips">
+                <span class="chip">Free to start</span>
+                <span class="chip">Chats not retained</span>
+                <span class="chip">187 cities</span>
+                <span class="chip">Guna Milan</span>
+              </div>
+              <a class="golink" href="https://freeaikundli.com">freeaikundli.com <span>&#8594;</span></a>
+            </div>
+          </div>
+        </article>
+        <div class="gloss"></div>
+      </div>
+
+      <!-- ASAI CRM -->
+      <div class="slab-shell a rise">
+        <article class="slab">
+          <div class="slab-top"><span class="dot"></span><span class="tag">Enterprise · Live</span></div>
+          <div class="slab-inner">
+            <div>
+              <h3>ASAI CRM</h3>
+              <p class="claim">A CRM for organizations that answer to a board.</p>
+            </div>
+            <div>
+              <p class="body">Two editions on one platform. Engage tracks constituents, programs and
+                grants for economic development agencies, foundations and government teams. Campus follows
+                applicants from first inquiry to enrolled. Both speak your sector's vocabulary, log every
+                interaction, and connect to Claude so you can ask questions of your own pipeline directly.</p>
+              <div class="chips">
+                <span class="chip">Engage</span>
+                <span class="chip">Campus</span>
+                <span class="chip">30-day trial</span>
+                <span class="chip">Claude connector</span>
+              </div>
+              <a class="golink" href="https://asaicrm.com">asaicrm.com <span>&#8594;</span></a>
+            </div>
+          </div>
+        </article>
+        <div class="gloss"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach">
+    <div class="wrap">
+      <div class="sec-head rise" style="margin-bottom:38px">
+        <h2 class="chrome">How these get built.</h2>
+        <p>Three rules that hold across everything with our name on it.</p>
+      </div>
+
+      <div class="panel rise">
+        <div class="cell">
+          <span class="tag">Rule one</span>
+          <strong>A deterministic core</strong>
+          <p>Anything that can be calculated is calculated. Models explain the result and put it in
+            context — they never invent the number underneath it.</p>
+        </div>
+        <div class="cell">
+          <span class="tag">Rule two</span>
+          <strong>Privacy by construction</strong>
+          <p>The less we keep, the less there is to lose. Data stays in the United States, conversations
+            aren't retained, and nothing is sold. It's an architecture decision, not a policy page.</p>
+        </div>
+        <div class="cell">
+          <span class="tag">Rule three</span>
+          <strong>One short path</strong>
+          <p>Founder-built, full stack, sixteen years of enterprise engineering behind it. An idea reaches
+            production in days and a fix reaches you in minutes.</p>
+        </div>
+      </div>
+
+      <div class="stack rise">
+        <span>Next.js</span><span>Supabase</span><span>Vercel</span><span>Stripe</span><span>Anthropic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="hairline" style="margin-bottom:56px"></div>
+      <h2 class="chrome rise">Tell us what you're trying to build.</h2>
+      <p class="lede rise">Pilots, procurement questions, partnerships, or a product that should exist and
+        doesn't yet. Messages reach the person who writes the code.</p>
+      <a class="mailto chrome rise" href="mailto:contact@freeaikundli.com">contact@freeaikundli.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="tag">© 2026 Ahujas LLC · Los Angeles, California</span>
+    <span class="tag" style="display:flex;gap:22px">
+      <a href="https://freeaikundli.com">freeaikundli</a>
+      <a href="https://asaicrm.com">ASAI CRM</a>
+      <a href="mailto:contact@freeaikundli.com">Contact</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.rise');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function(el, i){ el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+})();
+</script>
+</body>
+</html>
