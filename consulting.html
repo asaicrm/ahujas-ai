@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software consulting without the staffing — Ahujas</title>
+<meta name="description" content="Ahujas delivers custom software with AI agent teams, coordinated by a forward deployed engineer who works directly with your team. No body shopping, no bench, no visa dependencies. Scope and terms per SOW." />
+<meta property="og:title" content="Software consulting without the staffing" />
+<meta property="og:description" content="Agent-run delivery, coordinated by a forward deployed engineer embedded with your team." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#06090f;--chrome:#e8eefb;--mute:#8492b0;
+  --violet:#7b61ff;--cyan:#3fd8e0;--gold:#f0b24a;
+  --display:"Bodoni Moda",Georgia,serif;
+  --body:"Space Grotesk",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --pad:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;background:var(--ink);color:var(--chrome);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(70% 50% at 50% 0%,rgba(123,97,255,.16),transparent 70%),
+             radial-gradient(50% 40% at 88% 22%,rgba(63,216,224,.10),transparent 70%),
+             radial-gradient(60% 40% at 10% 46%,rgba(240,178,74,.06),transparent 70%)}
+main,header,footer{position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;border-radius:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:var(--pad)}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.chrome{background-image:linear-gradient(178deg,#fff 0%,#dce5f6 30%,#8b9cbd 50%,#f2f6ff 60%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:-.015em}
+h1{font-size:clamp(36px,5.8vw,72px);line-height:1.04}
+h1 span{display:block}
+h2{font-size:clamp(29px,4.2vw,50px);line-height:1.08}
+.lede{font-size:clamp(17px,1.55vw,20px);color:#b8c4dc;max-width:60ch}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:linear-gradient(180deg,rgba(6,9,15,.82),rgba(6,9,15,.35));border-bottom:1px solid rgba(232,238,251,.07)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.mark{font-family:var(--display);font-size:20px;letter-spacing:.34em;padding-left:.34em}
+.mark i{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.1em;color:var(--gold);vertical-align:super}
+.nav nav{display:flex;gap:28px}
+.nav nav a{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);transition:color .3s}
+.nav nav a:hover{color:var(--chrome)}
+@media(max-width:820px){.nav nav a:not(:last-child){display:none}}
+section{padding:clamp(66px,9vw,120px) 0}
+.hairline{height:1px;background:linear-gradient(90deg,transparent,rgba(232,238,251,.22),transparent)}
+
+.hero{padding:clamp(44px,7vw,80px) 0 clamp(56px,7vw,92px)}
+.hero h1{margin:20px 0 0}
+.hero .lede{margin-top:24px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(232,238,251,.2);background:linear-gradient(180deg,rgba(232,238,251,.13),rgba(232,238,251,.03));transition:border-color .35s,transform .35s,box-shadow .35s}
+.btn:hover{border-color:rgba(232,238,251,.55);transform:translateY(-2px);box-shadow:0 12px 34px rgba(123,97,255,.25)}
+.btn.ghost{background:transparent;border-color:rgba(232,238,251,.13);color:var(--mute)}
+.btn.ghost:hover{color:var(--chrome)}
+
+.absent{display:grid;gap:1px;background:rgba(232,238,251,.09);border-top:1px solid rgba(232,238,251,.09);border-bottom:1px solid rgba(232,238,251,.09)}
+@media(min-width:620px){.absent{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.absent{grid-template-columns:repeat(4,1fr)}}
+.ab{background:#080d17;padding:30px clamp(16px,2.2vw,28px) 34px}
+.ab b{display:block;font-family:var(--display);font-size:20px;font-weight:400;margin-bottom:9px;color:#c9f6f9}
+.ab p{margin:0;color:var(--mute);font-size:14.5px;line-height:1.6}
+
+/* FDE feature */
+.fde{display:grid;gap:clamp(26px,4vw,56px);align-items:start;margin-top:40px}
+@media(min-width:900px){.fde{grid-template-columns:.95fr 1.05fr}}
+.fde-card{position:relative;border:1px solid rgba(232,238,251,.14);border-radius:20px;padding:clamp(28px,3.6vw,42px);overflow:hidden;
+  background:linear-gradient(158deg,rgba(26,37,64,.92),rgba(9,14,26,.8));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 30px 70px -44px rgba(0,0,0,.9)}
+.fde-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(104deg,transparent 38%,rgba(255,255,255,.09) 47%,transparent 58%);transform:translateX(-130%);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.fde-card:hover::after{transform:translateX(130%)}
+.fde-card h3{font-size:clamp(24px,2.6vw,30px);color:#d8ccff;margin-bottom:14px}
+.fde-card p{margin:0;color:#b2bfd8;font-size:16px}
+.does{list-style:none;margin:0;padding:0}
+.does li{padding:16px 0;border-top:1px solid rgba(232,238,251,.09);color:#a9b6d0;font-size:15.5px;line-height:1.55;display:flex;gap:14px}
+.does li:first-child{border-top:0;padding-top:0}
+.does .glyph{color:var(--violet);font-family:var(--mono);font-size:13px;flex:none;width:14px;line-height:1.55}
+
+/* speed */
+.speed-grid{display:grid;gap:18px;margin-top:44px}
+@media(min-width:820px){.speed-grid{grid-template-columns:repeat(3,1fr)}}
+.sp{border:1px solid rgba(232,238,251,.12);border-radius:16px;padding:28px 24px 32px;background:linear-gradient(158deg,rgba(20,29,50,.66),rgba(9,14,26,.6))}
+.sp span.tag{display:block;margin-bottom:12px}
+.sp strong{display:block;font-family:var(--display);font-size:21px;font-weight:400;margin-bottom:10px;color:#ffe3b0}
+.sp p{margin:0;color:var(--mute);font-size:15px;line-height:1.6}
+
+.ledger{display:grid;gap:1px;background:rgba(232,238,251,.09);border:1px solid rgba(232,238,251,.09);border-radius:18px;overflow:hidden;margin-top:44px}
+@media(min-width:760px){.ledger{grid-template-columns:1fr 1fr}}
+.col{background:#080d17;padding:clamp(24px,3.4vw,38px)}
+.col.new{background:linear-gradient(158deg,rgba(24,34,60,.92),rgba(9,14,26,.86))}
+.col h3{font-size:22px;margin-bottom:6px}
+.col.old h3{color:#7f8aa4}
+.col.new h3{color:#c9f6f9}
+.col ul{list-style:none;margin:18px 0 0;padding:0}
+.col li{display:flex;gap:12px;padding:11px 0;border-top:1px solid rgba(232,238,251,.07);font-size:15.5px;line-height:1.5}
+.col li:first-child{border-top:0}
+.col.old li{color:#77829c}
+.col.new li{color:#c2cde3}
+.glyph{font-family:var(--mono);font-size:13px;flex:none;width:16px;line-height:1.5}
+.col.old .glyph{color:#55607a}
+.col.new .glyph{color:var(--cyan)}
+
+.steps{counter-reset:s;margin-top:48px;display:grid;gap:18px}
+@media(min-width:900px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{position:relative;border:1px solid rgba(232,238,251,.12);border-radius:16px;padding:26px 22px 28px;background:linear-gradient(158deg,rgba(20,29,50,.7),rgba(10,15,27,.6));overflow:hidden}
+.step::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(104deg,transparent 40%,rgba(255,255,255,.07) 48%,transparent 58%);transform:translateX(-130%);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.step:hover::after{transform:translateX(130%)}
+.step b{counter-increment:s;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--violet);display:block;margin-bottom:12px}
+.step b::before{content:"0" counter(s) " — "}
+.step strong{display:block;font-family:var(--display);font-size:21px;font-weight:400;margin-bottom:9px}
+.step p{margin:0;color:var(--mute);font-size:14.5px;line-height:1.6}
+
+.rails{display:grid;gap:26px;margin-top:44px}
+@media(min-width:820px){.rails{grid-template-columns:repeat(3,1fr)}}
+.rail{border-left:1px solid rgba(232,238,251,.14);padding-left:22px}
+.rail strong{display:block;font-family:var(--display);font-size:20px;font-weight:400;margin:8px 0 10px}
+.rail p{margin:0;color:var(--mute);font-size:15px}
+
+.shapes{display:grid;gap:18px;margin-top:44px}
+@media(min-width:820px){.shapes{grid-template-columns:repeat(3,1fr)}}
+.shape{border:1px solid rgba(232,238,251,.12);border-radius:16px;padding:28px 24px 30px;background:linear-gradient(158deg,rgba(20,29,50,.6),rgba(9,14,26,.6))}
+.shape h3{font-size:21px;margin-bottom:10px;color:#ffe3b0}
+.shape p{margin:0;color:#a9b6d0;font-size:15px;line-height:1.6}
+
+.fit{display:grid;gap:30px;margin-top:40px}
+@media(min-width:820px){.fit{grid-template-columns:1fr 1fr}}
+.fitcard{border:1px solid rgba(232,238,251,.12);border-radius:18px;padding:30px 28px 34px;background:linear-gradient(158deg,rgba(20,29,50,.6),rgba(9,14,26,.6))}
+.fitcard h3{font-size:24px;margin-bottom:16px}
+.fitcard.yes h3{color:#c9f6f9}
+.fitcard.no h3{color:#f0b24a}
+.fitcard ul{list-style:none;margin:0;padding:0}
+.fitcard li{padding:9px 0;border-top:1px solid rgba(232,238,251,.07);color:#a9b6d0;font-size:15px}
+.fitcard li:first-child{border-top:0}
+
+.close{text-align:center}
+.mailto{font-family:var(--display);font-size:clamp(22px,4vw,46px);display:inline-block;margin-top:24px;border-bottom:1px solid rgba(232,238,251,.2);padding-bottom:8px;transition:border-color .4s;word-break:break-word}
+.mailto:hover{border-color:var(--chrome)}
+footer{border-top:1px solid rgba(232,238,251,.08);padding:32px 0 44px}
+.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.foot .tag{color:#55627e}
+.foot a:hover{color:var(--chrome)}
+.rise{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rise.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rise{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="mark chrome" href="/">AHUJAS<i>.ai</i></a>
+    <nav>
+      <a href="#model">The model</a>
+      <a href="#fde">Your engineer</a>
+      <a href="#speed">Speed</a>
+      <a href="#engage">Engagements</a>
+      <a href="#contact">Talk to us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero wrap">
+    <span class="tag">Software consulting · Ahujas LLC</span>
+    <h1>
+      <span class="chrome">We deliver software.</span>
+      <span class="chrome">We don't place people.</span>
+    </h1>
+    <p class="lede">Ahujas builds custom software with AI agent teams, coordinated by a forward deployed
+      engineer who works directly with your people. There is no bench, no subcontractor chain, and nobody
+      to place at your site. You contract for outcomes under a statement of work — scope, term, and what
+      happens afterward are whatever the two of us agree they should be.</p>
+    <div class="cta-row">
+      <a class="btn" href="#contact">Start a conversation</a>
+      <a class="btn ghost" href="#model">How the model works</a>
+    </div>
+  </section>
+
+  <section id="model" style="padding-top:0">
+    <div class="absent rise">
+      <div class="ab"><b>No body shopping</b><p>We don't resell consultants or mark up a staffing chain. You are buying delivered software, not seats.</p></div>
+      <div class="ab"><b>No visa dependencies</b><p>No sponsorship, transfers, or work-authorization timelines anywhere in the engagement. The question doesn't arise.</p></div>
+      <div class="ab"><b>No bench to carry</b><p>Capacity scales to the work in front of it. You aren't funding idle time between your projects.</p></div>
+      <div class="ab"><b>No ramp-up tax</b><p>Nobody has to be recruited, badged, or brought up to speed before work can begin.</p></div>
+    </div>
+  </section>
+
+  <!-- FDE -->
+  <section id="fde" style="padding-top:clamp(44px,6vw,72px)">
+    <div class="wrap">
+      <h2 class="chrome rise">One engineer, embedded with your team.</h2>
+      <p class="lede rise" style="margin-top:18px">Agents do the building. A forward deployed engineer owns the
+        relationship — the single technical contact who sits in your channels and is answerable for the work.</p>
+      <div class="fde rise">
+        <div class="fde-card">
+          <span class="tag">The role</span>
+          <h3>Forward deployed engineer</h3>
+          <p>Not an account manager relaying messages to a delivery team. An engineer who understands your
+            system, writes the specs the agents work from, reviews what comes back, and answers your
+            questions directly. One person, the whole engagement.</p>
+        </div>
+        <div>
+          <ul class="does">
+            <li><span class="glyph">→</span>Joins your Slack, your standups, and your planning — as closely as you want them involved</li>
+            <li><span class="glyph">→</span>Translates what your product, data, and security people need into specifications agents can execute</li>
+            <li><span class="glyph">→</span>Reviews and approves every merge before it reaches you</li>
+            <li><span class="glyph">→</span>Coordinates with your existing engineers, vendors, and IT so work lands inside your conventions</li>
+            <li><span class="glyph">→</span>Carries the context across phases, so continuity doesn't depend on who's still on the account</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEED -->
+  <section id="speed">
+    <div class="wrap">
+      <div class="hairline" style="margin-bottom:52px"></div>
+      <h2 class="chrome rise">Built for teams that needed it last quarter.</h2>
+      <p class="lede rise" style="margin-top:18px">Greenfield work is where this model separates hardest from staffing.
+        Nothing has to be hired before anything gets built, so the only real constraint is how fast you can make decisions.</p>
+      <div class="speed-grid rise">
+        <div class="sp">
+          <span class="tag">Startups</span>
+          <strong>Ship before the round closes</strong>
+          <p>Get a working product in front of users, design partners, or investors without committing to engineering payroll you can't yet carry. Scale the engagement up if it works, stop it if the thesis changes.</p>
+        </div>
+        <div class="sp">
+          <span class="tag">Greenfield</span>
+          <strong>No legacy drag, full speed</strong>
+          <p>A new system with no existing code to work around is the fastest thing we build. Architecture gets decided once, implemented in parallel, and you're clicking through something real while a staffing firm is still scheduling interviews.</p>
+        </div>
+        <div class="sp">
+          <span class="tag">Iteration</span>
+          <strong>Rebuild instead of patching</strong>
+          <p>When a direction turns out wrong, the cost of changing it is low enough to actually change it. Product decisions stop being constrained by how much rework the team can absorb.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="hairline" style="margin-bottom:52px"></div>
+      <h2 class="chrome rise">What changes when the labor isn't people.</h2>
+      <div class="ledger rise">
+        <div class="col old">
+          <span class="tag">Traditional consulting</span>
+          <h3>Staffing-based delivery</h3>
+          <ul>
+            <li><span class="glyph">—</span>Resumes, interviews, and rate cards before anything gets built</li>
+            <li><span class="glyph">—</span>Billable ramp-up while consultants learn your domain</li>
+            <li><span class="glyph">—</span>Work authorization and transfers on the critical path</li>
+            <li><span class="glyph">—</span>Staff rotate off; the person who understood your system leaves</li>
+            <li><span class="glyph">—</span>Change requests queue behind the firm's other accounts</li>
+            <li><span class="glyph">—</span>Scaling up means finding and placing more bodies</li>
+          </ul>
+        </div>
+        <div class="col new">
+          <span class="tag">Our model</span>
+          <h3>Agent-run delivery</h3>
+          <ul>
+            <li><span class="glyph">→</span>A scoping conversation, then work begins</li>
+            <li><span class="glyph">→</span>Context lives in the spec and the repository, not in a person's head</li>
+            <li><span class="glyph">→</span>No work-authorization questions anywhere in the engagement</li>
+            <li><span class="glyph">→</span>Your forward deployed engineer stays with the engagement</li>
+            <li><span class="glyph">→</span>Revisions aren't rationed by available headcount</li>
+            <li><span class="glyph">→</span>Scaling up is a capacity decision, not a hiring cycle</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="hairline" style="margin-bottom:52px"></div>
+      <h2 class="chrome rise">How we work.</h2>
+      <p class="lede rise" style="margin-top:18px">The shape varies with the engagement. The rhythm is consistent.</p>
+      <div class="steps rise">
+        <div class="step"><b></b><strong>Scope</strong><p>A working session on what the system has to do, what it must never do, and what success looks like. That becomes the SOW.</p></div>
+        <div class="step"><b></b><strong>Build</strong><p>Agent teams write, test, and review in parallel, against specs your engineer writes and merges they approve.</p></div>
+        <div class="step"><b></b><strong>Review</strong><p>You work against a running environment, not a status deck. Feedback goes in and comes back quickly.</p></div>
+        <div class="step"><b></b><strong>Continue</strong><p>Enhancements, maintenance, the next phase, or a clean exit — whichever the SOW calls for.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="hairline" style="margin-bottom:52px"></div>
+      <h2 class="chrome rise">Who is accountable.</h2>
+      <p class="lede rise" style="margin-top:18px">"AI built it" is not a quality standard. This is what stands behind the work.</p>
+      <div class="rails rise">
+        <div class="rail">
+          <span class="tag">Responsibility</span>
+          <strong>Your engineer signs off</strong>
+          <p>Every merge is reviewed and approved by the forward deployed engineer on your engagement. Agents do the labor. The judgment is human, and it has a name attached to it.</p>
+        </div>
+        <div class="rail">
+          <span class="tag">Verification</span>
+          <strong>Tested against the spec</strong>
+          <p>Automated tests, dependency and vulnerability scanning, and acceptance criteria written into the SOW. You see results, not assurances.</p>
+        </div>
+        <div class="rail">
+          <span class="tag">Transparency</span>
+          <strong>Readable, conventional code</strong>
+          <p>Standard frameworks, documented decisions, no proprietary runtime of ours in the middle of your stack. Another engineer can read it and keep going.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="engage">
+    <div class="wrap">
+      <div class="hairline" style="margin-bottom:52px"></div>
+      <h2 class="chrome rise">Engagements take the shape you need.</h2>
+      <p class="lede rise" style="margin-top:18px">Scope, term, pricing structure, IP, hosting, and ongoing support are all
+        defined per SOW. These are starting points, not a menu.</p>
+      <div class="shapes rise">
+        <div class="shape"><h3>Build and transfer</h3><p>We build it, hand over the source and infrastructure, and your team runs it from there.</p></div>
+        <div class="shape"><h3>Build and operate</h3><p>We build it and stay on for enhancements, maintenance, and support under a continuing SOW.</p></div>
+        <div class="shape"><h3>Ongoing capacity</h3><p>A standing engagement that absorbs a backlog of changes and new work across your systems.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="hairline" style="margin-bottom:52px"></div>
+      <h2 class="chrome rise">Where this fits.</h2>
+      <div class="fit rise">
+        <div class="fitcard yes">
+          <h3>Well suited</h3>
+          <ul>
+            <li>Greenfield products and new systems</li>
+            <li>MVPs and prototypes with a date attached</li>
+            <li>Internal tools, portals, and dashboards</li>
+            <li>Replacing a spreadsheet that runs a real process</li>
+            <li>Workflow and reporting automation</li>
+            <li>Data migrations and system integrations</li>
+          </ul>
+        </div>
+        <div class="fitcard no">
+          <h3>We'll say so up front</h3>
+          <ul>
+            <li>Work requiring cleared personnel</li>
+            <li>Safety-critical or life-critical systems</li>
+            <li>Contracts mandating on-site staff</li>
+            <li>Engagements where you need headcount, not software</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap close">
+      <div class="hairline" style="margin-bottom:52px"></div>
+      <h2 class="chrome rise">Tell us what you need built.</h2>
+      <p class="lede rise" style="margin:18px auto 0">Send a paragraph about the problem. We'll come back with questions,
+        a proposed approach, and a statement of work — or an honest note that we're not the right fit.</p>
+      <a class="mailto chrome rise" href="mailto:contact@freeaikundli.com">contact@freeaikundli.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="tag">© 2026 Ahujas LLC · Los Angeles, California</span>
+    <span class="tag" style="display:flex;gap:22px">
+      <a href="https://freeaikundli.com">freeaikundli</a>
+      <a href="https://asaicrm.com">ASAI CRM</a>
+      <a href="mailto:contact@freeaikundli.com">Contact</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items=document.querySelectorAll('.rise');
+  if(reduce||!('IntersectionObserver' in window)){items.forEach(function(el){el.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el,i){el.style.transitionDelay=(i%3)*90+'ms';io.observe(el);});
+})();
+</script>
+</body>
+</html>
