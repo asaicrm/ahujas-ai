@@ -147,6 +147,106 @@ footer{border-top:1px solid rgba(232,238,251,.08);padding:32px 0 44px}
 .rise.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rise{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ahujas.ai/#org",
+      "name": "Ahujas LLC",
+      "url": "https://ahujas.ai/",
+      "email": "contact@freeaikundli.com",
+      "areaServed": "US",
+      "description": "Ahujas LLC is a software consultancy that builds custom software using AI agent teams coordinated by a forward deployed engineer, without staffing or placing consultants.",
+      "knowsAbout": [
+        "AI agent software development",
+        "custom software consulting",
+        "greenfield software development",
+        "MVP development",
+        "workflow automation",
+        "system integration"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://ahujas.ai/consulting#service",
+      "name": "Agent-run software development consulting",
+      "serviceType": "Custom software development consulting",
+      "provider": { "@id": "https://ahujas.ai/#org" },
+      "areaServed": "US",
+      "description": "Custom software delivered by AI agent teams and coordinated by a forward deployed engineer who works directly with the client's team. No consultant placement, no subcontractor bench, no work-authorization dependencies. Scope, term and support are defined per statement of work.",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Startups, nonprofits, universities and government agencies needing custom software"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Engagement models",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Build and transfer", "description": "Ahujas builds the system, hands over source and infrastructure, and the client's team operates it." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Build and operate", "description": "Ahujas builds the system and continues with enhancements, maintenance and support under a continuing statement of work." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ongoing capacity", "description": "A standing engagement that absorbs a backlog of changes and new work across the client's systems." } }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ahujas.ai/consulting#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does it mean that Ahujas builds software without placing consultants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ahujas does not resell consultants or mark up a staffing chain. AI agent teams do the building, coordinated by a forward deployed engineer. There is no bench to carry, nobody to place on site, no recruiting or badging before work starts, and no sponsorship or work-authorization timelines anywhere in the engagement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is accountable for code that AI agents write?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A forward deployed engineer is assigned to the engagement and reviews and approves every merge before it reaches the client. Agents do the labor; the judgment is human and named. Work is verified with automated tests, dependency and vulnerability scanning, and acceptance criteria written into the statement of work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a forward deployed engineer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A single technical contact who works directly with the client's team rather than an account manager relaying messages. The forward deployed engineer joins the client's channels and planning, translates what their product, data and security people need into specifications the agents execute, reviews what comes back, coordinates with existing engineers and vendors, and carries context across phases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is this model faster for startups and greenfield projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nothing has to be hired before anything gets built, so the constraint is how fast decisions get made rather than how fast a team can be staffed. Greenfield systems with no legacy code to work around are the fastest case: architecture is decided once and implemented in parallel. Because iteration is inexpensive, a wrong product direction can be rebuilt instead of patched."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are pricing and ownership decided?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scope, term, pricing structure, intellectual property, hosting and ongoing support are all defined per statement of work rather than fixed in advance. Engagements commonly take one of three shapes: build and transfer, build and operate, or ongoing capacity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What work is not a good fit for Ahujas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Work requiring cleared personnel, safety-critical or life-critical systems, contracts that mandate on-site staff, and engagements where the client needs headcount rather than software."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
